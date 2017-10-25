@@ -33,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 //Vibration test: *#*#0842#*#*
 
                 //Let's make a test getting the IMEI!
-                String encodedHash = Uri.encode("#");
-                String myUSSD = "*#06#".replace("#", encodedHash);
-                requestUSSD(myUSSD);
+
+                requestUSSD("#222*1#");
             }
         });
 
@@ -48,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, MY_PERMISSIONS_REQUEST_CALL_PHONE);
             return;
         }
+
+        String encodedHash = Uri.encode("#");
+        USSD = USSD.replace("#", encodedHash);
 
         /* Reception of a USSD response is only supported in API 26+ */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { //API >= 26
